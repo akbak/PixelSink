@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelSink - Image Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PixelSink</h1>
+            <p>Upload an image to analyze for hidden data and metadata.</p>
+        </header>
+        <main>
+            <form action="/analyze" method="post" enctype="multipart/form-data" class="upload-form">
+                <label for="file-upload" class="custom-file-upload">
+                    Choose Image
+                </label>
+                <input id="file-upload" name="file" type="file" accept=".png, .jpg, .jpeg" required>
+                <span id="file-name">No file chosen</span>
+                <button type="submit">Analyze Image</button>
+            </form>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+        </main>
+    </div>
+    <script>
+        document.getElementById('file-upload').onchange = function () {
+            document.getElementById('file-name').textContent = this.files[0].name;
+        };
+    </script>
+</body>
+</html>

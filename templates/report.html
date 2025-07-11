@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Report - PixelSink</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container report-container">
+        <header>
+            <h1>Analysis Report</h1>
+        </header>
+        <main class="report-main">
+            <div class="report-left">
+                <h2>Image Preview</h2>
+                <img src="{{ url_for('uploaded_file', filename=results.image_path) }}" alt="Uploaded Image" class="preview-image">
+            </div>
+            <div class="report-right">
+                <div class="card score-card">
+                    <h3>Suspicion Score: <span class="score-value">{{ results.suspicion_score }}</span></h3>
+                </div>
+
+                <div class="card">
+                    <h3><i class="icon">#</i> Image Hashes</h3>
+                    <p><strong>SHA256:</strong> <span class="hash">{{ results.sha256 }}</span></p>
+                    <p><strong>pHash:</strong> <span class="hash">{{ results.phash }}</span></p>
+                </div>
+
+                <div class="card">
+                    <h3><i class="icon">📄</i> EXIF Metadata</h3>
+                    {% if results.exif_data and results.exif_data.Status != 'No EXIF information found.' %}
+                        <div class="exif-data">
+                            <ul>
+                            {% for key, value in results.exif_data.items() %}
+                                <li><strong>{{ key }}:</strong> {{ value }}</li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    {% else %}
+                        <p>No EXIF data found.</p>
+                    {% endif %}
+                </div>
+
+                <div class="card">
+                    <h3><i class="icon">🔍</i> LSB Steganography Analysis</h3>
+                    <p><strong>Status:</strong> <span class="status-{{ results.lsb_analysis.suspicion_level.lower() }}">{{ results.lsb_analysis.status }}</span></p>
+                    <p><strong>Details:</strong> {{ results.lsb_analysis.details }}</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <a href="{{ url_for('index') }}" class="back-link">Analyze Another Image</a>
+        </footer>
+    </div>
+</body>
+</html>

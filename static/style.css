@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --background-color: #f4f7f6;
+    --card-bg-color: #ffffff;
+    --text-color: #333;
+    --light-text-color: #777;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 8px rgba(0,0,0,0.05);
+    --high-suspicion: #e74c3c;
+    --low-suspicion: #2ecc71;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--card-bg-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+header h1 {
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.custom-file-upload {
+    border: 2px dashed var(--primary-color);
+    color: var(--primary-color);
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#file-name {
+    font-style: italic;
+    color: var(--light-text-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.flashes {
+    list-style: none;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Report Page Styles */
+.report-main {
+    display: flex;
+    gap: 30px;
+}
+
+.report-left, .report-right {
+    flex: 1;
+}
+
+.preview-image {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--secondary-color);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.score-card {
+    text-align: center;
+    background: linear-gradient(135deg, var(--secondary-color), #3c5064);
+    color: #fff;
+}
+
+.score-card h3 {
+    border: none;
+    color: #fff;
+}
+
+.score-value {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.hash {
+    font-family: monospace;
+    word-break: break-all;
+    background: #f0f0f0;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.exif-data ul {
+    padding-left: 0;
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.exif-data li {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.status-high {
+    color: var(--high-suspicion);
+    font-weight: 600;
+}
+
+.status-low {
+    color: var(--low-suspicion);
+    font-weight: 600;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+}
